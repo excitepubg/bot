@@ -361,9 +361,11 @@ async def on_startup():
     asyncio.create_task(run_bot())
     asyncio.create_task(monitor_subscriptions())
 
-if __name__=="__main__":
-    import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=False)
+if __name__ == "__main__":
+    import uvicorn, os
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
+
 
 
 # ======================================
@@ -375,3 +377,4 @@ def run_bot():
 if __name__ == "__main__":
     threading.Thread(target=run_bot).start()
     app.run(host="0.0.0.0", port=5000, debug=True)
+
