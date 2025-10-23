@@ -1,3 +1,4 @@
 flask
 pytelegrambotapi
 yt-dlp
+aiogram==3.*
